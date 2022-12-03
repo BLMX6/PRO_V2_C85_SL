@@ -48,7 +48,7 @@ export default class RegisterScreen extends Component {
                 .then((userCredential) => {
                     Alert.alert("User registered!!");
                     console.log(userCredential.user.uid)
-                    this.props.navigation.replace("Login");
+                    this.props.navigation.replace("InicioSesion");
                     firebase.database().ref("/users/" + userCredential.user.uid)
                         .set({
                             email: userCredential.user.email,
@@ -61,7 +61,7 @@ export default class RegisterScreen extends Component {
                     Alert.alert(error.message);
                 });
         } else {
-            Alert.alert("Passwords don't match!");
+            Alert.alert("¡Las contraseñas no coinciden!");
         }
     };
 
@@ -79,35 +79,35 @@ export default class RegisterScreen extends Component {
                 <TextInput
                     style={styles.textinput}
                     onChangeText={text => this.setState({ first_name: text })}
-                    placeholder={"First name"}
+                    placeholder={"Nombre"}
                     placeholderTextColor={"#FFFFFF"}
 
                 />
                 <TextInput
                     style={styles.textinput}
                     onChangeText={text => this.setState({ last_name: text })}
-                    placeholder={"Last name"}
+                    placeholder={"Apellido"}
                     placeholderTextColor={"#FFFFFF"}
 
                 />
                 <TextInput
                     style={styles.textinput}
                     onChangeText={text => this.setState({ email: text })}
-                    placeholder={"Enter Email"}
+                    placeholder={"Ingresar correo electrónico"}
                     placeholderTextColor={"#FFFFFF"}
 
                 />
                 <TextInput
                     style={styles.textinput}
                     onChangeText={text => this.setState({ password: text })}
-                    placeholder={"Enter Password"}
+                    placeholder={"Ingresar contraseña"}
                     placeholderTextColor={"#FFFFFF"}
                     secureTextEntry
                 />
                 <TextInput
                     style={styles.textinput}
                     onChangeText={text => this.setState({ confirmPassword: text })}
-                    placeholder={"Re-enter Password"}
+                    placeholder={"Ingresar nuevamente la contraseña"}
                     placeholderTextColor={"#FFFFFF"}
                     secureTextEntry
                 />
@@ -118,9 +118,9 @@ export default class RegisterScreen extends Component {
                     <Text style={styles.buttonText}>Register</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.replace("Login")}
+                    onPress={() => this.props.navigation.replace("InicioSesion")}
                 >
-                    <Text style={styles.buttonTextNewUser}>Login ?</Text>
+                    <Text style={styles.buttonTextNewUser}>¿Iniciar sesión?</Text>
                 </TouchableOpacity>
             </View>
         );
